@@ -6,7 +6,7 @@ on:
 
 jobs:
   tests:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     env:
       SECRET: ${{ secrets.DJANGO_SECRET }}
       DEBUG: ${{ secrets.DEBUG }}
@@ -46,15 +46,15 @@ jobs:
       - name: Линтинг
         run: flake8 logistic/ --exclude logistic/migrations/
 
-#      - name: Тестирование
-#        run: python manage.py test
-#        env:
-#          SECRET_KEY: ${{ env.SECRET }}
-#          DEBUG: ${{ env.DEBUG }}
-#          ALLOWED_HOSTS: ${{ env.ALLOWED_HOSTS }}
-#          DB_ENGINE: ${{ env.DB_ENGINE }}
-#          DB_USER: ${{ env.DB_USER }}
-#          DB_PASSWORD: ${{ env.DB_PASSWORD }}
-#          DB_NAME: ${{ env.DB_NAME }}
-#          DB_HOST: ${{ env.DB_HOST }}
-#          DB_PORT: ${{ env.DB_PORT }}
+      - name: Тестирование
+        run: python manage.py test
+        env:
+          SECRET_KEY: ${{ env.SECRET }}
+          DEBUG: ${{ env.DEBUG }}
+          ALLOWED_HOSTS: ${{ env.ALLOWED_HOSTS }}
+          DB_ENGINE: ${{ env.DB_ENGINE }}
+          DB_USER: ${{ env.DB_USER }}
+          DB_PASSWORD: ${{ env.DB_PASSWORD }}
+          DB_NAME: ${{ env.DB_NAME }}
+          DB_HOST: ${{ env.DB_HOST }}
+          DB_PORT: ${{ env.DB_PORT }}
